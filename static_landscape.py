@@ -20,10 +20,10 @@ class FitDynamicLand(ThreeDScene):
         def param_gauss_mod_find(u, v):
             x = u
             y = v
-            z = p2.get_plain_noise(u, v)
-            z_1 = 3*(1-x)**2.*math.exp(-(x**2) - (y+1)**2) - 10*(x/5 - x **
-                                                                    3 - y**5)*math.exp(-x**2-y**2) - 1/3*math.exp(-(x+1)**2 - y**2)
-            return (x, y, z)
+            z_noise = p2.get_plain_noise(u, v)
+            z_f = 3*(1-x)**2.*math.exp(-(x**2) - (y+1)**2) - 10*(x/5 - x **
+                    3 - y**5)*math.exp(-x**2-y**2) - 1/3*math.exp(-(x+1)**2 - y**2)
+            return (x, y, z_f + z_noise)
 
         my_plane = ParametricSurface(
             param_gauss_mod_find,
@@ -33,14 +33,13 @@ class FitDynamicLand(ThreeDScene):
             u_min=-res,
             u_max=+res,
         )
-
+        
+        #Define 3d axes
         axes = ThreeDAxes()
         self.add(axes)
-
-        current = my_plane
-
         self.move_camera(phi=55 * DEGREES, theta=-65*DEGREES)
 
+        # Generate frame details
         main_title = Text('Generation n = ', size=0.75)
         self.add_fixed_in_frame_mobjects(main_title)
         main_title.move_to(RIGHT * 3 + UP * 3.5)
@@ -63,6 +62,8 @@ class FitDynamicLand(ThreeDScene):
         y3d.rotate(PI/2)
         y3d.move_to(LEFT*5)
         self.add(y3d)
+
+        current = my_plane
 
         # MAIN LOOP
         max_gens = 4
