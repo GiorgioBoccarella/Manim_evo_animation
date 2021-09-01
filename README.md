@@ -1,8 +1,8 @@
 # Trajectory along a "Neutral genotype Network"
 
 
+![output](https://user-images.githubusercontent.com/45296503/131686724-21a22bd4-3075-4a0c-8df1-baf433faa3a5.gif)
 
-![output](https://user-images.githubusercontent.com/45296503/131684908-8a02c677-9aab-4c61-a3d6-a5bd8076a9df.gif)
 
 
 
