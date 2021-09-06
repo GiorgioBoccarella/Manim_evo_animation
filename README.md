@@ -1,7 +1,7 @@
 
 
 
-# Frame preview of density dependent selection
+# Preview of density dependent selection
 
 ![Screenshot-vid](https://user-images.githubusercontent.com/45296503/132244966-e240c709-e1a1-46d8-ab01-26e66bd839d4.png)
 
