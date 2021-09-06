@@ -1,3 +1,6 @@
+
+
+
 # Trajectory along a "Neutral genotype Network"
 
 
@@ -17,6 +20,7 @@
 
 
 
+https://user-images.githubusercontent.com/45296503/132242312-97fb8c23-51e5-4d5d-b44a-f30e1ffd8a50.mp4
 
 
 
