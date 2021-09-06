@@ -1,7 +1,8 @@
+Animation I have created from scratch with manim 
 
 
-
-# Preview of density dependent selection
+# Preview of Frequency dependent selection simulation
+Simulation and graphic parameter on file. 
 
 ![Screenshot-vid](https://user-images.githubusercontent.com/45296503/132244966-e240c709-e1a1-46d8-ab01-26e66bd839d4.png)
 
@@ -14,6 +15,8 @@ https://user-images.githubusercontent.com/45296503/132242312-97fb8c23-51e5-4d5d-
 
 # Trajectory along a "Neutral genotype Network"
 
+Animation inspired by The origin of evolutionary innovation Chapter 5 (Andreas Wagner)
+
 
 ![output](https://user-images.githubusercontent.com/45296503/131686724-21a22bd4-3075-4a0c-8df1-baf433faa3a5.gif)
 
@@ -21,5 +24,6 @@ https://user-images.githubusercontent.com/45296503/132242312-97fb8c23-51e5-4d5d-
 
 # Create modular network
 
+Generate modular network with certain feautures
 
 ![ModTest_ManimCE_v0 9 0](https://user-images.githubusercontent.com/45296503/129604123-0823977f-ee07-467f-b866-93a2b9f79055.png)
