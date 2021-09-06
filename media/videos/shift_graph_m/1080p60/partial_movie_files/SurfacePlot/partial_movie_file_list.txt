@@ -1,0 +1,2 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/giorgio/Documents/Manim_evo_animation/media/videos/shift_graph_m/1080p60/partial_movie_files/SurfacePlot/2233173061_175004563_3834918826.mp4'

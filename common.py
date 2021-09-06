@@ -2,6 +2,7 @@ import math
 import manim
 import numpy as np
 import perlin_noise as pns
+import scipy.stats
 
 p2 = pns.PerlinNoiseFactory(2)
 
@@ -24,6 +25,27 @@ def make_ind(features):
 
 def add_to_archive(individual, archive):
     archive[individual.id] = individual
+    return 1
+
+
+def mutate_norm(archive_dict, prob):
+
+    for ind_in_archive in range(0, len(archive_dict)):
+        res = 3
+        n, p = 1, prob  # number of trials, probability of each trial
+        s = int(np.random.binomial(n, p, 1))
+        if s > 0:
+            x, y, z = archive_dict[ind_in_archive].coord
+            mu, sigma = 0, 0.12  # mean and standard deviation
+            x_ran = float(np.random.normal(mu, sigma, 1))
+            y_ran = float(np.random.normal(mu, sigma, 1))
+            # x_ran = float(scipy.stats.cauchy.rvs(loc=0, scale=0.025, size=1))
+            # y_ran = float(scipy.stats.cauchy.rvs(loc=0, scale=0.025, size=1))
+            x_m = x + x_ran
+            y_m = y + y_ran
+            # Check they do not move outside the u,v
+            if -res < x_m < res and -res < y_m < res:
+                archive_dict[ind_in_archive].coord = x_m, y_m, z
     return 1
 
 

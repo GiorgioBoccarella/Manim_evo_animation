@@ -11,10 +11,12 @@ class SurfacePlot(Scene):
         def param_gauss(u, v):
             x = u
             y = v
-            sigma, mu = 0.4, [0.0, 0.0]
-            d = np.linalg.norm(np.array([x - mu[0], y - mu[1]]))
-            z = np.exp(-(d ** 2 / (2.0 * sigma ** 2)))
-            return np.array([x * 0.5, y * 0.5, z * 0.8])
+            z_f = (
+                3 * (1 - x) ** 2.0 * math.exp(-(x ** 2) - (y + 1) ** 2)
+                - 10 * (x / 5 - x ** 3 - y ** 5) * math.exp(-(x ** 2) - y ** 2)
+                - 1 / 3 * math.exp(-((x + 1) ** 2) - y ** 2)
+            )
+            return (x, y, z_f)
 
         gauss_plane = OpenGLSurface(
             param_gauss,
