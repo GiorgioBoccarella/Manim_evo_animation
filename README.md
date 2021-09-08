@@ -31,6 +31,7 @@ https://user-images.githubusercontent.com/45296503/132533492-68e765cf-2d92-4f0f-
 ## Trajectory along a "Neutral genotype Network"
 
 Animation inspired by *"The origin of evolutionary innovation" Chapter 5 (Andreas Wagner)*
+Different connectedness values favour the discovery on novel phenotypes in the genotype network 
 
 
 ![output](https://user-images.githubusercontent.com/45296503/131686724-21a22bd4-3075-4a0c-8df1-baf433faa3a5.gif)
