@@ -34,8 +34,10 @@ Animation inspired by *"The origin of evolutionary innovation" Chapter 5 (Andrea
 
 Different connectedness values favour the discovery on novel phenotypes in the genotype network 
 
+![image](https://user-images.githubusercontent.com/45296503/132538529-848b9e73-49eb-4b38-b77f-e72cce08c7ae.png)
 
-![output](https://user-images.githubusercontent.com/45296503/131686724-21a22bd4-3075-4a0c-8df1-baf433faa3a5.gif)
+
+https://user-images.githubusercontent.com/45296503/132538554-b39ad2e4-7a95-4676-8ad8-accdaa9a2323.mp4
 
 
 
