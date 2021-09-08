@@ -2,7 +2,7 @@
 
 ## Fitness landscapes
 
-### Preview of Frequency-dependent selection simulation
+### **Preview of Frequency-dependent selection simulation**
 
 
 Simulation and graphic parameters on file. 
@@ -15,7 +15,7 @@ Simulation and graphic parameters on file.
 https://user-images.githubusercontent.com/45296503/132242312-97fb8c23-51e5-4d5d-b44a-f30e1ffd8a50.mp4
 
 
-### Preview of selection on static landscape
+### **Preview of selection on static landscape**
 
 ![image](https://user-images.githubusercontent.com/45296503/132533470-2e890644-83b1-4ae1-a504-4cb5c8567661.png)
 
@@ -24,13 +24,14 @@ https://user-images.githubusercontent.com/45296503/132242312-97fb8c23-51e5-4d5d-
 https://user-images.githubusercontent.com/45296503/132533492-68e765cf-2d92-4f0f-9f23-6876bf5ad3d1.mp4
 
 
-### Preview of selection on dynamic landscape
+### **Preview of selection on dynamic landscape**
 
 
 
-## Trajectory along a "Neutral genotype Network"
+## **Trajectory along a "Neutral genotype Network"**
 
-Animation inspired by *"The origin of evolutionary innovation" Chapter 5 (Andreas Wagner)*
+Animation inspired by *"The origin of evolutionary innovation" Chapter 5 (Andreas Wagner)*.
+
 Different connectedness values favour the discovery on novel phenotypes in the genotype network 
 
 
@@ -38,7 +39,7 @@ Different connectedness values favour the discovery on novel phenotypes in the g
 
 
 
-## Create modular network
+## **Create modular network**
 
 Generate modular network with certain feautures
 
