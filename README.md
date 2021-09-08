@@ -7,8 +7,8 @@
 
 Simulation and graphic parameters on file. 
 
-![Screenshot-vid](https://user-images.githubusercontent.com/45296503/132244966-e240c709-e1a1-46d8-ab01-26e66bd839d4.png)
 
+![image](https://user-images.githubusercontent.com/45296503/132534202-80c88fb0-8a77-4ca9-9df2-819b68a2d7e5.png)
 
 
 
