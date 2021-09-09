@@ -5,7 +5,7 @@
 ### **Preview of Frequency-dependent selection simulation**
 
 
-Simulation and graphic parameters on file. ciao
+Simulation and graphic parameters on file. 
 
 
 ![image](https://user-images.githubusercontent.com/45296503/132534202-80c88fb0-8a77-4ca9-9df2-819b68a2d7e5.png)
