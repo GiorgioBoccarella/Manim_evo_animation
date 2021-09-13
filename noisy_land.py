@@ -7,25 +7,11 @@ import perlin_noise as pns
 from scipy.stats import kde
 from perlin_noise import *
 
+np.random.seed(123456)
+
+my_list = cm.create_color_list()
+
 res = 3
-
-
-def mutate_norm(archive_dict, prob):
-
-    for ind_in_archive in range(0, len(archive_dict)):
-        n, p = 1, prob  # number of trials, probability of each trial
-        s = int(np.random.binomial(n, p, 1))
-        if s > 0:
-            x, y, z = archive_dict[ind_in_archive].coord
-            mu, sigma = 0, 0.15  # mean and standard deviation
-            x_ran = float(np.random.normal(mu, sigma, 1))
-            y_ran = float(np.random.normal(mu, sigma, 1))
-            x_m = x + x_ran
-            y_m = y + y_ran
-            # Check they do not move outside the u,v
-            if -res < x_m < res and -res < y_m < res:
-                archive_dict[ind_in_archive].coord = x_m, y_m, z
-    return 1
 
 
 p2 = PerlinNoiseFactory(2, tile=(1000, 0))
@@ -41,49 +27,68 @@ class SimPlot(ThreeDScene):
     def construct(self):
 
         # Initialize surface and labels
+        surf_res = 3
 
         surface = ParametricSurface(
             lambda u, v: np.array([u, v, 0]),
             resolution=60,
-            u_min=-3,
-            u_max=3,
-            v_min=-3,
-            v_max=3,
+            u_min=-surf_res,
+            u_max=surf_res,
+            v_min=-surf_res,
+            v_max=surf_res,
         )
-        # self.move_camera(0.7*np.pi/2, 0.4 * np.pi)
-        self.move_camera(phi=55 * DEGREES, theta=-65 * DEGREES)
-        self.add(surface)
 
-        axes = ThreeDAxes()
-        self.add(axes)
+        axes = ThreeDAxes(
+            x_length=(6),
+            y_length=(6),
+            z_length=(1.3),
+            x_range=(0, 6, 1),
+            y_range=(0, 6, 1),
+            z_range=(0, 1, 1),
+        )
 
-        main_title = Text("Generation n = ", size=0.75)
+        # Camera and Labels
+        self.set_camera_orientation(phi=55 * DEGREES, theta=42 * DEGREES, distance=90)
+        surface.set_fill_by_value(axes=axes, colors=my_list)
+        self.play(Create(surface))
+        self.play(Create(axes))
+
+
+        main_title = Text("Generation n = ", size=0.50)
         self.add_fixed_in_frame_mobjects(main_title)
-        main_title.move_to(RIGHT * 3 + UP * 3.5)
+        main_title.move_to(RIGHT * 5 + UP * 3.5)
 
-        gen_num = Text("000", size=0.75)
+        gen_num = Text("000", size=0.55)
         self.add_fixed_in_frame_mobjects(gen_num)
         gen_num.next_to(main_title, RIGHT)
 
         # Axes labels
-        fit_text = Text("Dynamic", slant=ITALIC).scale(0.65).set_shade_in_3d(True)
+        fit_text = (
+            Text("Dynamic landscape", slant=ITALIC).scale(0.4).set_shade_in_3d(True)
+        )
         fit_text.move_to(LEFT * 5.3 + UP * 3)
         self.add_fixed_in_frame_mobjects(fit_text)
 
-        x3d = Text("Trait X").scale(1)
-        x3d.move_to(DOWN * 5)
+        sel_text = Text("selection", slant=ITALIC).scale(0.4).set_shade_in_3d(True)
+        sel_text.move_to(LEFT * 5.2 + UP * 2.7)
+        self.add_fixed_in_frame_mobjects(sel_text)
+
+        x3d = Text("Trait X").scale(0.65)
+        x3d.move_to(DOWN * 3.5)
         self.add(x3d)
 
-        y3d = Text("Trait y").scale(1)
+        y3d = Text("Trait Y").scale(0.65)
         y3d.rotate(PI / 2)
-        y3d.move_to(LEFT * 5)
+        y3d.move_to(LEFT * 3.5)
         self.add(y3d)
 
+
         # MAIN LOOP
-        max_gens = 55
+        max_gens = 130
         n_gen = 1
-        pop_size = 50
+        pop_size = 100
         initialize = 0
+        coord_array = np.zeros([2, pop_size])
 
         while n_gen < max_gens + 1:
 
@@ -94,8 +99,8 @@ class SimPlot(ThreeDScene):
                 archive = {}
 
                 for ind_num in range(0, pop_size):
-                    ran_x = np.random.uniform(-2.7, -1.7)
-                    ran_y = np.random.uniform(-2.7, -1.7)
+                    ran_x = np.random.uniform(1.7, 2.3)
+                    ran_y = np.random.uniform(1.7, 2.3)
                     x, y, z = ran_x, ran_y, 0
                     coord = x, y, z
                     features = coord, ind_num, z
@@ -109,8 +114,14 @@ class SimPlot(ThreeDScene):
 
                 # Generate landscape (FD) based of id coord
                 # Environments changes based on new coordinates
+                for i in range(0, len(archive)):
+                    x, y, z = archive[i].coord
+                    coord_array[0][i] = x
+                    coord_array[1][i] = y
 
-                np.random.seed(n_gen)
+                group = []
+
+                # Change env proportions
                 z_rans += np.random.normal(0, 0.08, 4)
                 z_rans[z_rans < 0] = 0
 
@@ -155,16 +166,22 @@ class SimPlot(ThreeDScene):
                     group.append(dot)
 
                 # Move id and update surface
+                new_surface.set_fill_by_value(axes=axes, colors=my_list)
+                # Only first animation is a transform
+                if n_gen == 1:
+                    self.play(Transform(surface, new_surface))
                 surface.become(new_surface)
                 anim_group = VGroup(*group)
                 self.add(anim_group)
 
                 # Text update
-                gen_succ = Text(str(n_gen), size=0.75)
+                gen_succ = Text(str(n_gen), size=0.55)
                 gen_num.become(gen_succ)
                 gen_num.next_to(main_title, RIGHT)
 
-                self.wait(0.8)
+                self.begin_ambient_camera_rotation(rate=0.06, about="theta")
+                self.wait(0.25)
+                self.stop_ambient_camera_rotation()
                 self.remove(anim_group)
 
                 # SELECTION
@@ -205,7 +222,7 @@ class SimPlot(ThreeDScene):
 
                 archive = copy.deepcopy(new_archive)
 
-                mutate_norm(archive, 1)
+                cm.mutate_norm(archive, 1)
 
                 n_gen += 1
 
