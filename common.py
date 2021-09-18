@@ -2,14 +2,18 @@ import math
 import manim
 import numpy as np
 import perlin_noise as pns
-import scipy.stats
 
-p2 = pns.PerlinNoiseFactory(2)
 
-res = 4
+params_sim = \
+    {
+        "res": 4,
+        "seed": 123,
+        "max_gen":130,
+        "pop_size":100
+    }
 
-np.random.rand(4)
-
+# Set seed for mutation function in common
+np.random.rand(params_sim["seed"])
 
 class Ind:
     def __init__(self, coord, id, fitness):
@@ -125,21 +129,6 @@ def param_multi_mod(u, v):
     return np.array([x + 0.25, y + 0.25, z * 0.28])
 
 
-p2 = pns.PerlinNoiseFactory(2)
-
-
-def param_noisy_func(u, v, dt=1):
-    np.random.seed(dt)
-    x = u
-    y = v
-    z = p2.get_plain_noise(u, v) + np.random.uniform(0, 2)
-    z_1 = (
-        3 * (1 - x) ** 2.0 * math.exp(-(x ** 2) - (y + 1) ** 2)
-        - 10 * (x / 5 - x ** 3 - y ** 5) * math.exp(-(x ** 2) - y ** 2)
-        - 1 / 3 * math.exp(-((x + 1) ** 2) - y ** 2)
-    )
-    return (x, y, z * 0.4 + z_1 * 0.3)
-
 
 def my_func_comp(u, v):
     w = np.sin(0.2 * np.cos(u ** 2) + np.sin(u) + np.cos(v))
@@ -150,36 +139,3 @@ def my_func_comp_find(u, v):
     w = 0.1 * u ** 2 + np.sin(u) + np.cos(v) + 2
     return (u, v, (w - 2.5) * 0.45)
 
-
-def mutate_uni(archive_dict, mutation_step):
-
-    for ind_in_archive in range(0, len(archive_dict)):
-        x, y, z = archive_dict[ind_in_archive].coord
-        x_ran = np.random.uniform(-mutation_step, mutation_step)
-        y_ran = np.random.uniform(-mutation_step, mutation_step)
-        x_m = x + x_ran
-        y_m = y + y_ran
-        # Check they do not move outside the u,v
-        if -res < x_m < res and -res < y_m < res:
-            new_x, new_y, new_z = my_func_comp_find(x_m, y_m)
-            archive_dict[ind_in_archive].coord = new_x, new_y, new_z
-    return 1
-
-
-def mutate_cauchy(archive_dict, dt, prob):
-
-    for ind_in_archive in range(0, len(archive_dict)):
-        n, p = 1, prob  # number of trials, probability of each trial
-        s = int(np.random.binomial(n, p, 1))
-        if s > 0:
-            x, y, z = archive_dict[ind_in_archive].coord
-            mu, sigma = 0, 0.47  # mean and standard deviation
-            x_ran = float(np.random.normal(mu, sigma, 1))
-            y_ran = float(np.random.normal(mu, sigma, 1))
-            x_m = x + x_ran
-            y_m = y + y_ran
-            # Check they do not move outside the u,v
-            if -res < x_m < res and -res < y_m < res:
-                new_x, new_y, new_z = param_noisy_func(x_m, y_m, dt)
-                archive_dict[ind_in_archive].coord = new_x, new_y, new_z
-    return 1

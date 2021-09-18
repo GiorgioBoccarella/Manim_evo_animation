@@ -7,13 +7,15 @@ import perlin_noise as pns
 from scipy.stats import kde
 from perlin_noise import *
 
-np.random.seed(123456)
 
+# Seed of the simulation
+np.random.seed(cm.params_sim["seed"])
+
+# Generate gradient for surface
 my_list = cm.create_color_list()
 
-res = 3
 
-
+# Generate 4 base noise structure for noisy landscape 
 p2 = PerlinNoiseFactory(2, tile=(1000, 0))
 
 p3 = PerlinNoiseFactory(2, tile=(50, 50))
@@ -27,7 +29,7 @@ class SimPlot(ThreeDScene):
     def construct(self):
 
         # Initialize surface and labels
-        surf_res = 3
+        surf_res = cm.params_sim["seed"]
 
         surface = ParametricSurface(
             lambda u, v: np.array([u, v, 0]),
@@ -84,9 +86,9 @@ class SimPlot(ThreeDScene):
 
 
         # MAIN LOOP
-        max_gens = 130
+        max_gens = cm.params_sim["max_gen"]
+        pop_size = cm.params_sim["pop_size"]
         n_gen = 1
-        pop_size = 100
         initialize = 0
         coord_array = np.zeros([2, pop_size])
 
@@ -214,8 +216,9 @@ class SimPlot(ThreeDScene):
                     ind_id, len(norm_fit), p=norm_fit.flatten()
                 )
 
+                # print just to see how selection  is going 
                 print(new_pop_id)
-                print(len(archive))
+                # print(len(archive))
 
                 for j in range(0, len(new_archive)):
                     new_archive[j] = copy.deepcopy(archive[new_pop_id[j]])
