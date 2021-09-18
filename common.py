@@ -36,7 +36,7 @@ def mutate_norm(archive_dict, prob):
         s = int(np.random.binomial(n, p, 1))
         if s > 0:
             x, y, z = archive_dict[ind_in_archive].coord
-            mu, sigma = 0, 0.18  # mean and standard deviation
+            mu, sigma = 0, 0.15  # mean and standard deviation
             x_ran = float(np.random.normal(mu, sigma, 1))
             y_ran = float(np.random.normal(mu, sigma, 1))
             # x_ran = float(scipy.stats.cauchy.rvs(loc=0, scale=0.025, size=1))
