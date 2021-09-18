@@ -6,6 +6,7 @@ import copy
 import perlin_noise as pns
 from scipy.stats import kde
 from perlin_noise import *
+from manim.mobject.three_dimensions import MyInd
 
 
 # Seed of the simulation
@@ -16,13 +17,13 @@ my_list = cm.create_color_list()
 
 
 # Generate 4 base noise structure for noisy landscape 
-p2 = PerlinNoiseFactory(2, tile=(1000, 0))
+p2 = PerlinNoiseFactory(2, tile=(10300, 0), unbias=True)
 
-p3 = PerlinNoiseFactory(2, tile=(50, 50))
+p3 = PerlinNoiseFactory(2, tile=(27, 50))
 
-p4 = PerlinNoiseFactory(2, tile=(4, 80), unbias=True)
+p4 = PerlinNoiseFactory(2, tile=(405, 80), unbias=True)
 
-p5 = PerlinNoiseFactory(2, tile=(3, 3))
+p5 = PerlinNoiseFactory(2, tile=(5, 3))
 
 
 class SimPlot(ThreeDScene):
@@ -55,7 +56,6 @@ class SimPlot(ThreeDScene):
         self.play(Create(surface))
         self.play(Create(axes))
 
-
         main_title = Text("Generation n = ", size=0.50)
         self.add_fixed_in_frame_mobjects(main_title)
         main_title.move_to(RIGHT * 5 + UP * 3.5)
@@ -84,7 +84,6 @@ class SimPlot(ThreeDScene):
         y3d.move_to(LEFT * 3.5)
         self.add(y3d)
 
-
         # MAIN LOOP
         max_gens = cm.params_sim["max_gen"]
         pop_size = cm.params_sim["pop_size"]
@@ -92,9 +91,9 @@ class SimPlot(ThreeDScene):
         initialize = 0
         coord_array = np.zeros([2, pop_size])
 
-        while n_gen < max_gens + 1:
+        z_rans = np.array([0.15, 0.25, 0.15, 0.25])
 
-            z_rans = np.array([0.45, 0.45, 0.35, 0.35])
+        while n_gen < max_gens + 1:
 
             # Generate individuals
             if initialize == 0:
@@ -124,10 +123,12 @@ class SimPlot(ThreeDScene):
                 group = []
 
                 # Change env proportions
-                z_rans += np.random.normal(0, 0.08, 4)
-                z_rans[z_rans < 0] = 0
 
-                z_rans = np.round(z_rans / np.linalg.norm(z_rans, 1.0), 3)
+                s = int(np.random.binomial(1, 0.55, 1))
+                if s > 0:
+                    z_rans += np.random.normal(0, 0.14, 4)
+                    z_rans[z_rans <= 0] = 0.001
+                    z_rans = np.round(z_rans / z_rans.sum(), 4)
 
                 def perlin_surface(u, v, z_rans=z_rans, my_seed=n_gen):
                     x = u
@@ -136,14 +137,14 @@ class SimPlot(ThreeDScene):
 
                     z_3 = p3.get_plain_noise(u + 51, v) * z_rans[0]
                     z_2 = p2.get_plain_noise(u, v) * z_rans[1]
-                    z_4 = p4.get_plain_noise(u + 2, v + 3) * z_rans[2]
-                    z_5 = p5.get_plain_noise(u + 10, v - 7) * z_rans[3]
+                    z_4 = p4.get_plain_noise(u + 246, v + 3) * z_rans[2]
+                    z_5 = p5.get_plain_noise(u + 1500, v - 7) * z_rans[3]
 
                     d = np.sqrt(x * x + y * y)
-                    sigma, mu = 0.4, 0.0
+                    sigma, mu = 0.45, 0.0
                     z = np.exp(-((d - mu) ** 2 / (2.0 * sigma ** 2)))
 
-                    return [u, v, (z_2 + z_3 + z_4 + z_5) * 0.65 + z * 1.2]
+                    return [u, v, (z_2 + z_3 + z_4 + z_5) * 0.47 + z * 1.3]
 
                 new_surface = ParametricSurface(
                     perlin_surface,
@@ -162,7 +163,7 @@ class SimPlot(ThreeDScene):
                     x, y, z = perlin_surface(x, y, z_rans=z_rans, my_seed=n_gen)
                     archive[ind_in_archive].coord = x, y, z
                     # Add to group
-                    dot = Dot3D(radius=0.055, color=[RED_D]).move_to(
+                    dot = MyInd(color=PURE_RED, radius=0.075).move_to(
                         np.array([archive[ind_in_archive].coord])
                     )
                     group.append(dot)

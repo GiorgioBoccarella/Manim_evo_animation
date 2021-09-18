@@ -89,8 +89,8 @@ class SimPlot3(ThreeDScene):
                 archive = {}
 
                 for ind_num in range(0, pop_size):
-                    ran_x = np.random.uniform(1.7, 2.3)
-                    ran_y = np.random.uniform(1.7, 2.3)
+                    ran_x = np.random.uniform(1.9, 2.4)
+                    ran_y = np.random.uniform(1.9, 2.4)
                     x, y, z = ran_x, ran_y, 0
                     coord = x, y, z
                     features = coord, ind_num, z
