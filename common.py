@@ -9,7 +9,8 @@ params_sim = \
         "res": 4,
         "seed": 123,
         "max_gen":130,
-        "pop_size":100
+        "pop_size":100,
+        "perlin_seed":12345
     }
 
 # Set seed for mutation function in common
