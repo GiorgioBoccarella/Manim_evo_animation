@@ -7,18 +7,19 @@ from manim import *
 from itertools import product
 import math
 import random
-import common as cm
+import common
+
 
 def smoothstep(t):
     """Smooth curve with a zero derivative at 0 and 1, making it useful for
     interpolating.
     """
-    return t * t * (3. - 2. * t)
+    return t * t * (3.0 - 2.0 * t)
 
 
 def lerp(t, a, b):
     """Linear interpolation between a and b, given a fraction t."""
-    return a + t * (b - a) 
+    return a + t * (b - a)
 
 
 class PerlinNoiseFactory(object):
@@ -29,7 +30,9 @@ class PerlinNoiseFactory(object):
     the fly as necessary.
     """
 
-    random.seed(cm.params_sim["perlin_sim"])
+    my_t_seed = common.params_sim["perlin_seed"]
+
+    random.seed(my_t_seed)
 
     def __init__(self, dimension, octaves=1, tile=(), unbias=False):
         """Create a new Perlin noise factory in the given number of dimensions,
@@ -68,9 +71,9 @@ class PerlinNoiseFactory(object):
         # this is the same as a random unit vector in n dimensions.  Thanks
         # to: http://mathworld.wolfram.com/SpherePointPicking.html
         # Pick n normal random variables with stddev 1
-        random_point = [random.gauss(0, 1) for _ in range(self.dimension)] 
+        random_point = [random.gauss(0, 1) for _ in range(self.dimension)]
         # Then scale the result to a unit vector
-        scale = sum(n * n for n in random_point) ** -0.5 
+        scale = sum(n * n for n in random_point) ** -0.5
         return tuple(coord * scale for coord in random_point)
 
     def get_plain_noise(self, *point):
@@ -78,8 +81,9 @@ class PerlinNoiseFactory(object):
         either octaves or tiling.
         """
         if len(point) != self.dimension:
-            raise ValueError("Expected {} values, got {}".format(
-                self.dimension, len(point)))
+            raise ValueError(
+                "Expected {} values, got {}".format(self.dimension, len(point))
+            )
 
         # Build a list of the (min, max) bounds in each dimension
         grid_coords = []
@@ -143,7 +147,7 @@ class PerlinNoiseFactory(object):
         # 1 octave: ±1
         # 2 octaves: ±1½
         # 3 octaves: ±1¾
-        ret /= 2 - 2 ** (1 - self.octaves )
+        ret /= 2 - 2 ** (1 - self.octaves)
 
         if self.unbias:
             # The output of the plain Perlin noise algorithm has a fairly
@@ -154,7 +158,7 @@ class PerlinNoiseFactory(object):
             r = (ret + 1) / 2
             # Doing it this many times is a completely made-up heuristic.
             for _ in range(int(self.octaves / 2 + 0.5)):
-                r = smoothstep(r) 
+                r = smoothstep(r)
             ret = r * 2 - 1
 
         return ret
@@ -163,69 +167,60 @@ class PerlinNoiseFactory(object):
 """My own code for the terrain."""
 
 
+p2 = PerlinNoiseFactory(2, tile=(1000, 0))
 
-p2 = PerlinNoiseFactory(2, tile=(1000,0))
+p3 = PerlinNoiseFactory(2, tile=(50, 50))
 
-p3 = PerlinNoiseFactory(2, tile=(50,50))
+p4 = PerlinNoiseFactory(2, tile=(4, 80), unbias=True)
 
-p4 = PerlinNoiseFactory(2, tile=(4,80), unbias=True)
-
-p5 = PerlinNoiseFactory(2, tile=(3,3))
-
+p5 = PerlinNoiseFactory(2, tile=(3, 3))
 
 
 class PerlinTerrain(ThreeDScene):
     def construct(self):
-        surface = ParametricSurface(lambda u, v: np.array([u, v, 0]), 
-                                    resolution= 80,
-                                    u_min=-4,
-                                    u_max=4,
-                                    v_min=-4,
-                                    v_max=4,
-                                    )
-        self.move_camera(0.7*np.pi/2, 0.4 * np.pi)
+        surface = ParametricSurface(
+            lambda u, v: np.array([u, v, 0]),
+            resolution=80,
+            u_min=-4,
+            u_max=4,
+            v_min=-4,
+            v_max=4,
+        )
+        self.move_camera(0.7 * np.pi / 2, 0.4 * np.pi)
         self.add(surface)
         # self.begin_ambient_camera_rotation(rate=0.1)
         # Rotate for 5 seconds
-        #self.wait(5)
+        # self.wait(5)
         self.stop_ambient_camera_rotation()
         self.wait()
         z_rans = np.array([0.25, 0.25, 0.25, 0.35])
-        for i in range(1,60):
+        for i in range(1, 60):
             np.random.seed(i)
             z_rans += np.random.normal(0, 0.1, 4)
             z_rans[z_rans < 0] = 0
-            
-            z_rans = np.round(z_rans/np.linalg.norm(z_rans,1.0),3)
-            
-            print(z_rans)
-            
 
-            
-            def perlin_surface(u, v, z_rans = z_rans,  my_seed=i):
+            z_rans = np.round(z_rans / np.linalg.norm(z_rans, 1.0), 3)
+
+            print(z_rans)
+
+            def perlin_surface(u, v, z_rans=z_rans, my_seed=i):
                 x = u
                 y = v
                 np.random.seed(my_seed)
 
-                z_3 = p3.get_plain_noise(u + 51,v) * z_rans[0] 
-                z_2 = p2.get_plain_noise(u,v) * z_rans[1] 
-                z_4 = p4.get_plain_noise(u+2,v+3) * z_rans[2]
-                z_5 = p5.get_plain_noise(u+10,v -7) * z_rans[3]
-                
+                z_3 = p3.get_plain_noise(u + 51, v) * z_rans[0]
+                z_2 = p2.get_plain_noise(u, v) * z_rans[1]
+                z_4 = p4.get_plain_noise(u + 2, v + 3) * z_rans[2]
+                z_5 = p5.get_plain_noise(u + 10, v - 7) * z_rans[3]
+
                 d = np.sqrt(x * x + y * y)
                 sigma, mu = 0.4, 0.0
                 z = np.exp(-((d - mu) ** 2 / (2.0 * sigma ** 2)))
-            
-                return [u, v, (z_2 + z_3 + z_4 + z_5) *0.4 + z] 
-            
-            surface_r = ParametricSurface(perlin_surface,
-                                    resolution=80,
-                                    u_min=-4,
-                                    u_max=4,
-                                    v_min=-4,
-                                    v_max=4)
+
+                return [u, v, (z_2 + z_3 + z_4 + z_5) * 0.4 + z]
+
+            surface_r = ParametricSurface(
+                perlin_surface, resolution=80, u_min=-4, u_max=4, v_min=-4, v_max=4
+            )
             surface.become(surface_r)
             self.wait()
-    
-    
-

@@ -1,22 +1,21 @@
 from manim import *
 import numpy as np
 from numpy.linalg.linalg import norm
-import common as cm
 import copy
-import perlin_noise as pns
 from scipy.stats import kde
 from perlin_noise import *
+import common as cm
 from manim.mobject.three_dimensions import MyInd
 
 
 # Seed of the simulation
 np.random.seed(cm.params_sim["seed"])
 
-# Generate gradient for surface
+# Generate color gradient for surface
 my_list = cm.create_color_list()
 
 
-# Generate 4 base noise structure for noisy landscape 
+# Generate 4 base noise structure for noisy landscape
 p2 = PerlinNoiseFactory(2, tile=(10300, 0), unbias=True)
 
 p3 = PerlinNoiseFactory(2, tile=(27, 50))
@@ -30,7 +29,7 @@ class SimPlot(ThreeDScene):
     def construct(self):
 
         # Initialize surface and labels
-        surf_res = cm.params_sim["seed"]
+        surf_res = cm.params_sim["res"]
 
         surface = ParametricSurface(
             lambda u, v: np.array([u, v, 0]),
@@ -58,9 +57,9 @@ class SimPlot(ThreeDScene):
 
         main_title = Text("Generation n = ", size=0.50)
         self.add_fixed_in_frame_mobjects(main_title)
-        main_title.move_to(RIGHT * 5 + UP * 3.5)
+        main_title.move_to(RIGHT * 4.2 + UP * 3.5)
 
-        gen_num = Text("000", size=0.55)
+        gen_num = Text("000", size=0.6)
         self.add_fixed_in_frame_mobjects(gen_num)
         gen_num.next_to(main_title, RIGHT)
 
@@ -217,7 +216,7 @@ class SimPlot(ThreeDScene):
                     ind_id, len(norm_fit), p=norm_fit.flatten()
                 )
 
-                # print just to see how selection  is going 
+                # print just to see how selection  is going
                 print(new_pop_id)
                 # print(len(archive))
 

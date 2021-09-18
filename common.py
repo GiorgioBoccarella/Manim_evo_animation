@@ -1,20 +1,19 @@
 import math
 import manim
 import numpy as np
-import perlin_noise as pns
 
 
-params_sim = \
-    {
-        "res": 4,
-        "seed": 123,
-        "max_gen":130,
-        "pop_size":100,
-        "perlin_seed":12345
-    }
+params_sim = {
+    "res": 3,
+    "seed": 123,
+    "max_gen": 130,
+    "pop_size": 100,
+    "perlin_seed": 12345,
+}
 
 # Set seed for mutation function in common
 np.random.rand(params_sim["seed"])
+
 
 class Ind:
     def __init__(self, coord, id, fitness):
@@ -36,7 +35,7 @@ def add_to_archive(individual, archive):
 def mutate_norm(archive_dict, prob):
 
     for ind_in_archive in range(0, len(archive_dict)):
-        res = 3
+        res = params_sim["res"]
         n, p = 1, prob  # number of trials, probability of each trial
         s = int(np.random.binomial(n, p, 1))
         if s > 0:
@@ -130,7 +129,6 @@ def param_multi_mod(u, v):
     return np.array([x + 0.25, y + 0.25, z * 0.28])
 
 
-
 def my_func_comp(u, v):
     w = np.sin(0.2 * np.cos(u ** 2) + np.sin(u) + np.cos(v))
     return np.array([u, v, (w) * 1.2])
@@ -139,4 +137,3 @@ def my_func_comp(u, v):
 def my_func_comp_find(u, v):
     w = 0.1 * u ** 2 + np.sin(u) + np.cos(v) + 2
     return (u, v, (w - 2.5) * 0.45)
-
