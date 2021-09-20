@@ -2,33 +2,44 @@
 
 ## Fitness landscapes
 
-### **Preview of Frequency-dependent selection simulation**
+### Note that in the previews the mutation rate and mutation effect are quite large to showcase a short simulation
+
+Simulation and graphic parameters specified on file (common.py). 
+
+### **- Preview of Frequency-dependent selection simulation**
 
 
-Simulation and graphic parameters on file. 
+![f](https://user-images.githubusercontent.com/45296503/134049588-59e9c0b9-1317-4e6c-b328-45bb33fc94d4.png)
 
 
-![image](https://user-images.githubusercontent.com/45296503/132534202-80c88fb0-8a77-4ca9-9df2-819b68a2d7e5.png)
+### Video: 
+
+https://user-images.githubusercontent.com/45296503/134050189-da97c3e7-88b8-482f-9384-2b7bdf0c031e.mp4
 
 
+### **- Preview of selection on static landscape**
 
-https://user-images.githubusercontent.com/45296503/132242312-97fb8c23-51e5-4d5d-b44a-f30e1ffd8a50.mp4
-
-
-### **Preview of selection on static landscape**
-
-![image](https://user-images.githubusercontent.com/45296503/132533470-2e890644-83b1-4ae1-a504-4cb5c8567661.png)
-
-
-
-https://user-images.githubusercontent.com/45296503/132533492-68e765cf-2d92-4f0f-9f23-6876bf5ad3d1.mp4
-
-
-### **Preview of selection on dynamic landscape**
+![s](https://user-images.githubusercontent.com/45296503/134049673-300dfb29-4779-4259-8b54-c6ecd876fa5f.png)
 
 
 
-## **Trajectory along a "Neutral genotype Network"**
+### Video: 
+https://user-images.githubusercontent.com/45296503/134049688-4eb328d6-096f-47ce-807f-a02fb3976d54.mp4
+
+
+
+### **- Preview of selection on dynamic landscape**
+![d](https://user-images.githubusercontent.com/45296503/134049706-5d4b5971-b972-463a-ad0f-abcd6cd0ea80.png)
+
+
+
+### Video: 
+https://user-images.githubusercontent.com/45296503/134049788-8c6f9907-1175-4529-84d4-91237c7e46d7.mp4
+
+
+
+## **Trajectory along a "Neutral genotype Network**
+
 
 Animation inspired by *"The origin of evolutionary innovation" Chapter 5 (Andreas Wagner)*.
 
@@ -38,6 +49,7 @@ Different connectedness values favour the discovery on novel phenotypes in the g
 
 
 https://user-images.githubusercontent.com/45296503/132538554-b39ad2e4-7a95-4676-8ad8-accdaa9a2323.mp4
+
 
 
 
