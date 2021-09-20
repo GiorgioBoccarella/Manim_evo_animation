@@ -4,7 +4,7 @@
 
 ### Note that in the previews the mutation rate and mutation effect are quite large to showcase a short simulation
 
-### **Preview of Frequency-dependent selection simulation**
+### **- Preview of Frequency-dependent selection simulation**
 
 
 Simulation and graphic parameters on file. 
@@ -17,7 +17,7 @@ Simulation and graphic parameters on file.
 https://user-images.githubusercontent.com/45296503/134050189-da97c3e7-88b8-482f-9384-2b7bdf0c031e.mp4
 
 
-### **Preview of selection on static landscape**
+### **- Preview of selection on static landscape**
 
 ![s](https://user-images.githubusercontent.com/45296503/134049673-300dfb29-4779-4259-8b54-c6ecd876fa5f.png)
 
@@ -28,7 +28,7 @@ https://user-images.githubusercontent.com/45296503/134049688-4eb328d6-096f-47ce-
 
 
 
-### **Preview of selection on dynamic landscape**
+### **- Preview of selection on dynamic landscape**
 ![d](https://user-images.githubusercontent.com/45296503/134049706-5d4b5971-b972-463a-ad0f-abcd6cd0ea80.png)
 
 
