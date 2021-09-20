@@ -11,7 +11,6 @@ Simulation and graphic parameters on file.
 
 
 ### Video: 
-https://user-images.githubusercontent.com/45296503/134049621-4e744aba-b608-4187-8944-5daa25f593c4.mp4
 
 
 
@@ -36,7 +35,11 @@ https://user-images.githubusercontent.com/45296503/134049788-8c6f9907-1175-4529-
 
 
 
-## **Trajectory along a "Neutral genotype Network"**
+## **Trajectory along a "Neutral genotype Networ
+
+https://user-images.githubusercontent.com/45296503/134049979-27d376f2-413f-4f31-9a14-860a43d1e8fe.mp4
+
+k"**
 
 Animation inspired by *"The origin of evolutionary innovation" Chapter 5 (Andreas Wagner)*.
 
