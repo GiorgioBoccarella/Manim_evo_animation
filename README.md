@@ -11,7 +11,7 @@ Simulation and graphic parameters on file.
 ![image](https://user-images.githubusercontent.com/45296503/132534202-80c88fb0-8a77-4ca9-9df2-819b68a2d7e5.png)
 
 
-
+#Video: 
 https://user-images.githubusercontent.com/45296503/132242312-97fb8c23-51e5-4d5d-b44a-f30e1ffd8a50.mp4
 
 
@@ -20,13 +20,16 @@ https://user-images.githubusercontent.com/45296503/132242312-97fb8c23-51e5-4d5d-
 ![image](https://user-images.githubusercontent.com/45296503/132533470-2e890644-83b1-4ae1-a504-4cb5c8567661.png)
 
 
-
+#Video: 
 https://user-images.githubusercontent.com/45296503/132533492-68e765cf-2d92-4f0f-9f23-6876bf5ad3d1.mp4
 
 
 ### **Preview of selection on dynamic landscape**
 
 
+![Screenshot-20210920190039-1917x1079](https://user-images.githubusercontent.com/45296503/134043399-a597e529-e5c9-4806-abdd-f1e88249efe0.png)
+
+#Video: 
 
 ## **Trajectory along a "Neutral genotype Network"**
 
