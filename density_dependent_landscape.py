@@ -9,8 +9,10 @@ import scipy.stats
 from manim.mobject.three_dimensions import MyInd
 import math
 
-np.random.seed(123456)
+# Seed of the simulation
+np.random.seed(cm.params_sim["seed"])
 
+# Generate color gradient for surface
 my_list = cm.create_color_list()
 
 
@@ -18,8 +20,7 @@ class SimPlot3(ThreeDScene):
     def construct(self):
 
         # Initialize surface and labels
-
-        surf_res = 3
+        surf_res = cm.params_sim["res"]
 
         surface = ParametricSurface(
             lambda u, v: np.array([u, v, 0]),
@@ -49,9 +50,9 @@ class SimPlot3(ThreeDScene):
 
         main_title = Text("Generation n = ", size=0.50)
         self.add_fixed_in_frame_mobjects(main_title)
-        main_title.move_to(RIGHT * 5 + UP * 3.5)
+        main_title.move_to(RIGHT * 4.2 + UP * 3.5)
 
-        gen_num = Text("000", size=0.55)
+        gen_num = Text("000", size=0.6)
         self.add_fixed_in_frame_mobjects(gen_num)
         gen_num.next_to(main_title, RIGHT)
 
@@ -76,9 +77,9 @@ class SimPlot3(ThreeDScene):
         self.add(y3d)
 
         # MAIN LOOP
-        max_gens = 130
+        max_gens = cm.params_sim["max_gen"]
+        pop_size = cm.params_sim["pop_size"]
         n_gen = 1
-        pop_size = 140
         initialize = 0
         coord_array = np.zeros([2, pop_size])
 
@@ -130,11 +131,22 @@ class SimPlot3(ThreeDScene):
                     d_11 = np.sqrt(x_mod1 * x_mod1 + y_mod1 * y_mod1)
                     z_21 = np.exp(-((d_11 - mu) ** 2 / (2.0 * sigma ** 2)))
 
+                    x_mod2 = u + 0.9
+                    y_mod2 = v - 0.9
+                    d_112 = np.sqrt(x_mod2 * x_mod2 + y_mod2 * y_mod2)
+                    z_212 = np.exp(-((d_112 - mu) ** 2 / (2.0 * sigma ** 2)))
+
                     arr = np.array(
                         [
                             u,
                             v,
-                            (-z * 0.28 + z_1 * 1.15 + z_2 * 1.15 + z_21 * 1.15),
+                            (
+                                -z * 0.28
+                                + z_1 * 1.15
+                                + z_2 * 1.15
+                                + z_21 * 1.15
+                                - z_212 * 1.15
+                            ),
                         ]
                     )
 
@@ -160,11 +172,16 @@ class SimPlot3(ThreeDScene):
                     d_11 = np.sqrt(x_mod1 * x_mod1 + y_mod1 * y_mod1)
                     z_21 = np.exp(-((d_11 - mu) ** 2 / (2.0 * sigma ** 2)))
 
+                    x_mod2 = x + 0.9
+                    y_mod2 = y - 0.9
+                    d_112 = np.sqrt(x_mod2 * x_mod2 + y_mod2 * y_mod2)
+                    z_212 = np.exp(-((d_112 - mu) ** 2 / (2.0 * sigma ** 2)))
+
                     archive[ind_in_archive].coord = (
                         x,
                         y,
                         # This is the fitness
-                        z_mod[0] + z_1 * 1.15 + z_2 * 1.15 + z_21 * 1.15,
+                        z_mod[0] + z_1 * 1.15 + z_2 * 1.15 + z_21 * 1.15 - z_212 * 1.15,
                     )
                     # Add to group
                     dot = MyInd(color=PURE_RED, radius=0.075).move_to(
@@ -475,7 +492,7 @@ class SimPlot5(ThreeDScene):
 
                 archive = copy.deepcopy(new_archive)
 
-                cm.mutate_norm(archive, 0.5)
+                cm.mutate_norm(archive, cm.params_sim["mut_rate"])
 
                 n_gen += 1
 

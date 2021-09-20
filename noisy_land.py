@@ -225,7 +225,7 @@ class SimPlot(ThreeDScene):
 
                 archive = copy.deepcopy(new_archive)
 
-                cm.mutate_norm(archive, 1)
+                cm.mutate_norm(archive, cm.params_sim["mut_rate"])
 
                 n_gen += 1
 

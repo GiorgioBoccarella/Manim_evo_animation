@@ -3,14 +3,18 @@ import numpy as np
 from numpy.linalg.linalg import norm
 import common as cm
 import copy
-import perlin_noise as pns
-from scipy.stats import kde
+
+# import perlin_noise as pns
+# from scipy.stats import kde
 import scipy.stats
 from manim.mobject.three_dimensions import MyInd
 import math
 
-np.random.seed(3456)
 
+# Seed of the simulation
+np.random.seed(cm.params_sim["seed"])
+
+# Generate color gradient for surface
 my_list = cm.create_color_list()
 
 
@@ -18,8 +22,7 @@ class Sim(ThreeDScene):
     def construct(self):
 
         # Initialize surface and labels
-
-        surf_res = 3
+        surf_res = cm.params_sim["res"]
 
         def param_surf(u, v):
             x = u
@@ -60,9 +63,9 @@ class Sim(ThreeDScene):
 
         main_title = Text("Generation n = ", size=0.50)
         self.add_fixed_in_frame_mobjects(main_title)
-        main_title.move_to(RIGHT * 5 + UP * 3.5)
+        main_title.move_to(RIGHT * 4.2 + UP * 3.5)
 
-        gen_num = Text("000", size=0.55)
+        gen_num = Text("000", size=0.6)
         self.add_fixed_in_frame_mobjects(gen_num)
         gen_num.next_to(main_title, RIGHT)
 
@@ -87,9 +90,9 @@ class Sim(ThreeDScene):
         self.add(y3d)
 
         # MAIN LOOP
-        max_gens = 130
+        max_gens = cm.params_sim["max_gen"]
+        pop_size = cm.params_sim["pop_size"]
         n_gen = 1
-        pop_size = 150
         initialize = 0
         coord_array = np.zeros([2, pop_size])
 
@@ -189,7 +192,7 @@ class Sim(ThreeDScene):
 
                 archive = copy.deepcopy(new_archive)
 
-                cm.mutate_norm(archive, 0.6)
+                cm.mutate_norm(archive, cm.params_sim["mut_rate"])
 
                 n_gen += 1
 

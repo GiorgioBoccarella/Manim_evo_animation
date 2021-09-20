@@ -5,9 +5,10 @@ import numpy as np
 
 params_sim = {
     "res": 3,
-    "seed": 123,
-    "max_gen": 130,
-    "pop_size": 100,
+    "seed": 12,
+    "max_gen": 90,
+    "pop_size": 150,
+    "mut_rate": 0.4,
     "perlin_seed": 12345,
 }
 
@@ -40,7 +41,7 @@ def mutate_norm(archive_dict, prob):
         s = int(np.random.binomial(n, p, 1))
         if s > 0:
             x, y, z = archive_dict[ind_in_archive].coord
-            mu, sigma = 0, 0.15  # mean and standard deviation
+            mu, sigma = 0, 0.14  # mean and standard deviation
             x_ran = float(np.random.normal(mu, sigma, 1))
             y_ran = float(np.random.normal(mu, sigma, 1))
             # x_ran = float(scipy.stats.cauchy.rvs(loc=0, scale=0.025, size=1))
@@ -59,7 +60,7 @@ def create_color_list():
 
     my_res = 1000
     my_u_bound = 0.55
-    my_l_bound = -0.15
+    my_l_bound = -0.35
 
     interval_1 = np.linspace(my_l_bound, -0.0000001, num=my_res)
     interval_2 = np.linspace(-0.0000001, my_u_bound, num=my_res)
