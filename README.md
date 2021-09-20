@@ -2,6 +2,8 @@
 
 ## Fitness landscapes
 
+### Note that in the previews the mutation rate and mutation effect are quite large to showcase a short simulation
+
 ### **Preview of Frequency-dependent selection simulation**
 
 
