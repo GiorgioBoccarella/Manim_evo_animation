@@ -4,10 +4,10 @@
 
 ### Note that in the previews the mutation rate and mutation effect are quite large to showcase a short simulation
 
+Simulation and graphic parameters specified on file (common.py). 
+
 ### **- Preview of Frequency-dependent selection simulation**
 
-
-Simulation and graphic parameters on file. 
 
 ![f](https://user-images.githubusercontent.com/45296503/134049588-59e9c0b9-1317-4e6c-b328-45bb33fc94d4.png)
 
