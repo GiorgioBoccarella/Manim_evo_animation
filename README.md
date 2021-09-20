@@ -7,29 +7,34 @@
 
 Simulation and graphic parameters on file. 
 
-
-![image](https://user-images.githubusercontent.com/45296503/132534202-80c88fb0-8a77-4ca9-9df2-819b68a2d7e5.png)
+![f](https://user-images.githubusercontent.com/45296503/134049588-59e9c0b9-1317-4e6c-b328-45bb33fc94d4.png)
 
 
 ### Video: 
-https://user-images.githubusercontent.com/45296503/132242312-97fb8c23-51e5-4d5d-b44a-f30e1ffd8a50.mp4
+https://user-images.githubusercontent.com/45296503/134049621-4e744aba-b608-4187-8944-5daa25f593c4.mp4
+
 
 
 ### **Preview of selection on static landscape**
 
-![image](https://user-images.githubusercontent.com/45296503/132533470-2e890644-83b1-4ae1-a504-4cb5c8567661.png)
+![s](https://user-images.githubusercontent.com/45296503/134049673-300dfb29-4779-4259-8b54-c6ecd876fa5f.png)
+
 
 
 ### Video: 
-https://user-images.githubusercontent.com/45296503/132533492-68e765cf-2d92-4f0f-9f23-6876bf5ad3d1.mp4
+https://user-images.githubusercontent.com/45296503/134049688-4eb328d6-096f-47ce-807f-a02fb3976d54.mp4
+
 
 
 ### **Preview of selection on dynamic landscape**
+![d](https://user-images.githubusercontent.com/45296503/134049706-5d4b5971-b972-463a-ad0f-abcd6cd0ea80.png)
 
 
-![Screenshot-20210920190039-1917x1079](https://user-images.githubusercontent.com/45296503/134043399-a597e529-e5c9-4806-abdd-f1e88249efe0.png)
 
 ### Video: 
+https://user-images.githubusercontent.com/45296503/134049788-8c6f9907-1175-4529-84d4-91237c7e46d7.mp4
+
+
 
 ## **Trajectory along a "Neutral genotype Network"**
 
@@ -41,6 +46,7 @@ Different connectedness values favour the discovery on novel phenotypes in the g
 
 
 https://user-images.githubusercontent.com/45296503/132538554-b39ad2e4-7a95-4676-8ad8-accdaa9a2323.mp4
+
 
 
 
