@@ -38,7 +38,7 @@ https://user-images.githubusercontent.com/45296503/134049788-8c6f9907-1175-4529-
 
 
 
-## **Trajectory along a "Neutral genotype Network **
+## **Trajectory along a "Neutral genotype Network**
 
 
 Animation inspired by *"The origin of evolutionary innovation" Chapter 5 (Andreas Wagner)*.
