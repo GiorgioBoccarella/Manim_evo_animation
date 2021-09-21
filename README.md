@@ -1,6 +1,6 @@
 # Evolutionary theory animation with manim
 
-I built this animation with the help of manim, an engine for programmatic animation.If you want to reproduce the simulation shown here you should first set up  the [manim community edition](https://github.com/ManimCommunity/manim/), 
+I built this animation with the help of manim, an engine for programmatic animation.If you want to reproduce the simulation shown here you should first set up your [manim community edition](https://github.com/ManimCommunity/manim/) installation.
 
 
 ## Fitness landscapes
