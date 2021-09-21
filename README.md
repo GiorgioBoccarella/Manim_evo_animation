@@ -7,7 +7,7 @@ I built this animation with the help of manim, an engine for programmatic animat
 
 ## Usage
 
-The simulations paramter are stored in dictionary in common.py:
+The simulations paramters are stored in dictionary in common.py:
 
 ```python
 params_sim = {
