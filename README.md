@@ -1,6 +1,6 @@
 # Evolutionary theory animation with manim
 
-I built this animation with the help of manim, an engine for programmatic animation.If you want to reproduce the simulations shown here you should first set up your [manim community edition](https://github.com/ManimCommunity/manim/) installation.
+I built this animation with the help of manim, an engine for programmatic animation. If you want to reproduce the simulations shown here you should first set up your [manim community edition](https://github.com/ManimCommunity/manim/) installation.
 
 ### Note that in the previews the mutation rate and mutation size are quite large to showcase a short simulation
 
