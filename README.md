@@ -2,10 +2,32 @@
 
 I built this animation with the help of manim, an engine for programmatic animation.If you want to reproduce the simulation shown here you should first set up your [manim community edition](https://github.com/ManimCommunity/manim/) installation.
 
+### Note that in the previews the mutation rate and mutation effect are quite large to showcase a short simulation
+
+
+## Usage
+
+The simulations paramter are stored in dictionary in common.py:
+
+```python
+params_sim = {
+    "res": 3,
+    "seed": 124,
+    "max_gen": 90,
+    "pop_size": 150,
+    "mut_rate": 0.4,
+    "perlin_seed": 12356,
+}
+
+```
+
+In order to view the output of a scene (desnity dependent landscape for example), run the following in a terminal window:
+
+```sh
+manim -pl -ql density_dependent_landscape.py SimPlot
+```
 
 ## Fitness landscapes
-
-### Note that in the previews the mutation rate and mutation effect are quite large to showcase a short simulation
 
 Simulation and graphic parameters specified on file (common.py). 
 
