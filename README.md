@@ -39,7 +39,6 @@ Simulation and graphic parameters specified on file (common.py).
 
 ### Video: 
 
-https://user-images.githubusercontent.com/45296503/134050189-da97c3e7-88b8-482f-9384-2b7bdf0c031e.mp4
 
 
 ### **- Preview of selection on static landscape**
@@ -55,6 +54,10 @@ https://user-images.githubusercontent.com/45296503/134049688-4eb328d6-096f-47ce-
 
 ### **- Preview of selection on dynamic landscape**
 ![d](https://user-images.githubusercontent.com/45296503/134049706-5d4b5971-b972-463a-ad0f-abcd6cd0ea80.png)
+
+
+
+https://user-images.githubusercontent.com/45296503/135101000-4775ff63-5f4c-49c7-864b-25c78bc32d33.mp4
 
 
 
