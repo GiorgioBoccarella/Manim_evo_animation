@@ -59,9 +59,6 @@ https://user-images.githubusercontent.com/45296503/134049688-4eb328d6-096f-47ce-
 
 
 
-https://user-images.githubusercontent.com/45296503/135101000-4775ff63-5f4c-49c7-864b-25c78bc32d33.mp4
-
-
 
 ### Video: 
 https://user-images.githubusercontent.com/45296503/134049788-8c6f9907-1175-4529-84d4-91237c7e46d7.mp4
