@@ -39,6 +39,8 @@ Simulation and graphic parameters specified on file (common.py).
 
 ### Video: 
 
+https://user-images.githubusercontent.com/45296503/135101101-44bac0ca-6a63-44d1-be5c-7766c05d35b3.mp4
+
 
 
 ### **- Preview of selection on static landscape**
