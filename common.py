@@ -1,3 +1,12 @@
+import os
+
+
+def test_PYTHONPATH():
+    assert os.environ.get("PYTHONPATH") == "XX"
+
+
+test_PYTHONPATH
+
 import math
 import manim
 import numpy as np
@@ -5,11 +14,11 @@ import numpy as np
 
 params_sim = {
     "res": 3,
-    "seed": 12,
-    "max_gen": 90,
+    "seed": 124,
+    "max_gen": 120,
     "pop_size": 150,
     "mut_rate": 0.4,
-    "perlin_seed": 12345,
+    "perlin_seed": 1236,
 }
 
 # Set seed for mutation function in common
@@ -60,7 +69,7 @@ def create_color_list():
 
     my_res = 1000
     my_u_bound = 0.55
-    my_l_bound = -0.35
+    my_l_bound = -0.2
 
     interval_1 = np.linspace(my_l_bound, -0.0000001, num=my_res)
     interval_2 = np.linspace(-0.0000001, my_u_bound, num=my_res)

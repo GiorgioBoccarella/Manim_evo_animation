@@ -1,7 +1,7 @@
+import common as cm
 from manim import *
 import numpy as np
 from numpy.linalg.linalg import norm
-import common as cm
 import copy
 
 # import perlin_noise as pns
@@ -32,7 +32,11 @@ class Sim(ThreeDScene):
                 - 10 * (x / 5 - x ** 3 - y ** 5) * math.exp(-(x ** 2) - y ** 2)
                 - 1 / 3 * math.exp(-((x + 1) ** 2) - y ** 2)
             )
-            return np.array([x, y, z * 0.13])
+            d = np.sqrt((u + 0.4) * (u + 0.4) + (v + 0.4) * (v + 0.4))
+            sigma, mu = 0.7, 0.1
+            z_1 = np.exp(-((d - mu) ** 2 / (2.0 * sigma ** 2)))
+
+            return np.array([x, y, z * 0.14 + z_1 * 0.8])
 
         surface = ParametricSurface(
             param_surf,
