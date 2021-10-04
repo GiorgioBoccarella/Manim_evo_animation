@@ -6,7 +6,9 @@
             "type": "python",
             "request": "launch",
             "module": "manim",
-            "args": ["${file}"],
+            "args": [
+                "${file}"
+            ],
             "justMyCode": false
         }
     ]

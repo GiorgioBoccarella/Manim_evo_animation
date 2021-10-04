@@ -1,13 +1,11 @@
-import common as cm
 from manim import *
+import common as cm
 import numpy as np
 from numpy.linalg.linalg import norm
 import copy
 
 # import perlin_noise as pns
 # from scipy.stats import kde
-import scipy.stats
-from manim.mobject.three_dimensions import MyInd
 import math
 
 
@@ -137,7 +135,7 @@ class Sim(ThreeDScene):
                         z,
                     )
                     # Add to group
-                    dot = MyInd(color=PURE_RED, radius=0.075).move_to(
+                    dot = cm.MyInd(color=PURE_RED, radius=0.075).move_to(
                         np.array([archive[ind_in_archive].coord])
                     )
                     group.append(dot)

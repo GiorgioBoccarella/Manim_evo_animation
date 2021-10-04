@@ -1,14 +1,6 @@
-import os
-
-
-def test_PYTHONPATH():
-    assert os.environ.get("PYTHONPATH") == "XX"
-
-
-test_PYTHONPATH
-
 import math
-import manim
+from manim import *
+from manim.utils.color import rgb_to_color
 import numpy as np
 
 
@@ -86,7 +78,7 @@ def create_color_list():
         list.append(
             tuple(
                 (
-                    manim.rgb_to_color(
+                    rgb_to_color(
                         [
                             interval_red[i] / 255,
                             interval_green[i] / 255,
@@ -102,7 +94,7 @@ def create_color_list():
         list.append(
             tuple(
                 (
-                    manim.rgb_to_color(
+                    rgb_to_color(
                         [
                             interval_red2[i] / 255,
                             interval_green2[i] / 255,
@@ -147,3 +139,64 @@ def my_func_comp(u, v):
 def my_func_comp_find(u, v):
     w = 0.1 * u ** 2 + np.sin(u) + np.cos(v) + 2
     return (u, v, (w - 2.5) * 0.45)
+
+
+class MyInd(ParametricSurface):
+    """A mobject representing a three-dimensional sphere.
+
+    Examples
+    ---------
+
+    .. manim:: ExampleSphere
+        :save_last_frame:
+
+        class ExampleSphere(ThreeDScene):
+            def construct(self):
+                self.set_camera_orientation(phi=PI / 6, theta=PI / 6)
+                sphere1 = Sphere(
+                    center=(3, 0, 0),
+                    radius=1,
+                    resolution=(20, 20),
+                    u_range=[0.001, PI - 0.001],
+                    v_range=[0, TAU]
+                )
+                sphere1.set_color(RED)
+                self.add(sphere1)
+                sphere2 = Sphere(center=(-1, -3, 0), radius=2, resolution=(18, 18))
+                sphere2.set_color(GREEN)
+                self.add(sphere2)
+                sphere3 = Sphere(center=(-1, 2, 0), radius=2, resolution=(16, 16))
+                sphere3.set_color(BLUE)
+                self.add(sphere3)
+    """
+
+    def __init__(
+        self,
+        center=ORIGIN,
+        radius=0.05,
+        resolution=(4, 8),
+        u_range=[0.001, PI - 0.001],
+        v_range=[0, TAU],
+        color=RED,
+        fill_opacity=0.48,
+        **kwargs,
+    ):
+        ParametricSurface.__init__(
+            self,
+            self.func,
+            resolution=resolution,
+            u_range=u_range,
+            v_range=v_range,
+            fill_opacity=fill_opacity,
+            **kwargs,
+        )
+        self.radius = radius
+        self.scale(self.radius)
+        self.shift(center)
+        self.set_color(color)
+        self.set_opacity(fill_opacity)
+
+    def func(
+        self, u, v
+    ):  # FIXME: An attribute defined in manim.mobject.three_dimensions line 56 hides this method
+        return np.array([np.cos(v) * np.sin(u), np.sin(v) * np.sin(u), np.cos(u)])
