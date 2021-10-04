@@ -80,8 +80,14 @@ https://user-images.githubusercontent.com/45296503/132538554-b39ad2e4-7a95-4676-
 
 
 
-## **Create modular network**
+## **Network modularity**
 
 Generate modular network with certain feautures
 
 ![ModTest_ManimCE_v0 9 0](https://user-images.githubusercontent.com/45296503/129604123-0823977f-ee07-467f-b866-93a2b9f79055.png)
+
+
+
+https://user-images.githubusercontent.com/45296503/135896335-bd6d0209-4ef0-45b5-8b0c-2150bd4689ed.mp4
+
+
