@@ -83,7 +83,7 @@ https://user-images.githubusercontent.com/45296503/132538554-b39ad2e4-7a95-4676-
 
 # **Network modularity**
 
-Generate modular network with certain feautures
+Generate modular networks with certain features by rewiring edges between clusters. Modules are generated via networkx and modularity is calculated with a built-in function based on the Newman algorithm. 
 
 ![ModTest_ManimCE_v0 9 0](https://user-images.githubusercontent.com/45296503/129604123-0823977f-ee07-467f-b866-93a2b9f79055.png)
 
