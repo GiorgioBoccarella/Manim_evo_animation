@@ -1,6 +1,9 @@
 # Evolutionary theory animation with manim
 
-I built this animation with the help of manim, an engine for programmatic animation. If you want to reproduce the simulations shown here you should first set up your [manim community edition](https://github.com/ManimCommunity/manim/) installation.
+I built these simulations from scratch and visualized them with an engine for programmatic animation. If you want to reproduce the work shown here you should first set up your [manim community edition](https://github.com/ManimCommunity/manim/) installation.
+
+
+# Fitness landscapes
 
 ### Note that in the previews the mutation rate and mutation size are quite large to showcase a short simulation
 
@@ -26,8 +29,6 @@ In order to view the output of a scene (desnity dependent landscape for example)
 ```sh
 manim -pl -ql density_dependent_landscape.py SimPlot
 ```
-
-## Fitness landscapes
 
 Simulation and graphic parameters specified on file (common.py). 
 
@@ -65,7 +66,7 @@ https://user-images.githubusercontent.com/45296503/134049788-8c6f9907-1175-4529-
 
 
 
-## **Trajectory along a "Neutral genotype Network**
+# **Trajectory along a "Neutral genotype Network"**
 
 
 Animation inspired by *"The origin of evolutionary innovation" Chapter 5 (Andreas Wagner)*.
@@ -80,7 +81,7 @@ https://user-images.githubusercontent.com/45296503/132538554-b39ad2e4-7a95-4676-
 
 
 
-## **Network modularity**
+# **Network modularity**
 
 Generate modular network with certain feautures
 
