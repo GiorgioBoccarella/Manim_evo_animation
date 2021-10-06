@@ -5,7 +5,7 @@ I built these simulations from scratch and visualized them with an engine for pr
 
 # Fitness landscapes
 
-### Note that in the previews the mutation rate and mutation size are quite large to showcase a short simulation
+### Note that in the previews the mutation rate and mutation size are quite large to showcase a short preview simulation
 
 
 ## Usage
