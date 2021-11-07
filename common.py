@@ -7,7 +7,7 @@ import numpy as np
 params_sim = {
     "res": 3,
     "seed": 124,
-    "max_gen": 120,
+    "max_gen": 10,
     "pop_size": 150,
     "mut_rate": 0.4,
     "perlin_seed": 1236,
@@ -118,6 +118,23 @@ def param_gauss(u, v):
     sigma, mu = 0.4, 0.0
     z = np.exp(-((d - mu) ** 2 / (2.0 * sigma ** 2)))
     return np.array([x, y, z * 0.6])
+
+def param_gauss_mod(u, v):
+    x = u 
+    y = v
+    sigma, mu = 0.5, [0.0, 0.0]
+    d = np.linalg.norm(np.array([x - mu[0], y - mu[1]]))
+    z = np.exp(-(d ** 2 / (2.0 * sigma ** 2)))
+    return np.array([x, y, z])
+
+
+def param_gauss_mod2(u, v):
+    x = u 
+    y = v 
+    sigma, mu = 0.5, [1, 0.0]
+    d = np.linalg.norm(np.array([x - mu[0], y - mu[1]]))
+    z = np.exp(-(d ** 2 / (2.0 * sigma ** 2)))
+    return np.array([x, y, z])
 
 
 def param_multi_mod(u, v):
